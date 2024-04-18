@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
+import io.swagger.v3.oas.annotations.servers.Server;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 @Configuration
@@ -24,11 +25,14 @@ import io.swagger.v3.oas.models.security.SecurityRequirement;
 				 title="Blog Application Api ",
 				 description="This is backend of a blog application ",
 				 contact=@Contact(
-						 name="Ramanjeet Singh",
+						 name="Ramanjeet Singh" ,
 						 email="gentalman1945@gmail.com"
 						 )
 				 
-				)
+				),
+				servers = {
+						@Server(url = "/", description = "Default Server URL")
+					    	}
 		)
 
 public class SwaggerConfig {
