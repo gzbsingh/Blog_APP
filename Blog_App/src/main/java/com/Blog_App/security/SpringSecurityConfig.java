@@ -66,10 +66,10 @@ public class SpringSecurityConfig {
 				.anyRequest().hasRole("ADMIN"))
 				.csrf(csrf -> csrf.disable())
 
-		        .formLogin(Customizer.withDefaults())
-				.httpBasic(Customizer.withDefaults());
-	http.exceptionHandling(exception -> exception.authenticationEntryPoint(authenticationEntryPoint));
-	
+		        .formLogin(Customizer.withDefaults());
+				
+	http.exceptionHandling(exception -> exception.authenticationEntryPoint(authenticationEntryPoint))
+	.sessionManagement(s->s.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 		http.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
 		return http.build();
 		
