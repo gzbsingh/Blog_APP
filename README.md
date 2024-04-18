@@ -61,6 +61,9 @@ Access the application through the provided host link:  Host Link https://blogap
 
 ### login-  Authenticate endpoints based on token and user roles.
 
+# Swagger open Documentaion
+![swagger_blog](https://github.com/gzbsingh/Blog_APP/assets/39863817/44138e9f-97a4-4536-8c59-62c9c795e0ff)
+
 # Instruction to use Swagger API Documentation
  * Register as a user with the role "USER". For admin role-"ADMIN"
  * Login using the login API.
