@@ -1,20 +1,25 @@
 package com.Blog_App.security;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 
 
@@ -38,10 +43,22 @@ public class SpringSecurityConfig {
 
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
-
-		
-	http.authorizeHttpRequests(auth -> auth.requestMatchers("/api/user/**").permitAll()
+		http.sessionManagement(se -> se.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).
+		cors(cors ->{
+			cors.configurationSource(new org.springframework.web.cors.CorsConfigurationSource(){
+				
+				@Override
+				public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+				CorsConfiguration configuration= new CorsConfiguration();
+					configuration.setAllowedOriginPatterns(Collections.singletonList("*"));
+					configuration.setAllowedMethods(Collections.singletonList("*"));
+					configuration.setAllowCredentials(true);
+					configuration.setAllowedHeaders(Collections.singletonList("*"));
+					configuration.setExposedHeaders(Arrays.asList("Authorization"));
+					return configuration;
+				}
+			});
+		}).authorizeHttpRequests(auth -> auth.requestMatchers("/api/user/**").permitAll()
 				.requestMatchers("/swagger-ui*/**","/v3/api-docs/**").permitAll()
 			
 				.requestMatchers("/api/post/**").hasAnyRole("ADMIN","USER")

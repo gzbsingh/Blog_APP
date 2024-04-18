@@ -16,7 +16,7 @@ import com.Blog_App.security.JwtTokenProvider;
 public class UserServiceImpl implements UserService {
 
 	 @Autowired
-	private UserRepository repository;
+	 private UserRepository repository;
 	
 	 @Autowired
 	   private AuthenticationManager authenticationManager;
