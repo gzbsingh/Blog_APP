@@ -32,7 +32,8 @@ This project is a blog application implemented using Spring Boot for the backend
 The application is hosted on Railway.app.
 Access the application through the provided host link:  Host Link https://blogapp-production-b5f7.up.railway.app/swagger-ui/index.html#/
  
-
+# Video walk through of project
+https://drive.google.com/file/d/1VJhNFFPUxi7myZdytRUmI54Q9dyW5NGw/view?usp=sharing
  
   # End points
  
