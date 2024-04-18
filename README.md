@@ -9,8 +9,8 @@ This project is a blog application implemented using Spring Boot for the backend
 - Spring Security
 - JWT (JSON Web Tokens)
 - Maven (for dependency management)
-- MySQL (or PostgreSQL) for data storage
-
+- MySQL  for data storage
+-Unit testing-Testing added on service layer .
 
  # ER DIAGRAM
  ![ER_digram](https://github.com/gzbsingh/Blog_APP/assets/39863817/b82d59bc-93b8-4b15-95e5-c596eafa61d0)
